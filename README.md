@@ -31,8 +31,8 @@
 - `/end` - musiqi oxumağı dayandır
 
 #### Qrupunuza Almaq üçün.. 
-- `/katil` - Musiqi asistantı  qrupunuza qoşular. 
-- `/ayril` - Musiqi asistantı qrupunuzdan çıxar. 
+- `/gir` - Musiqi asistantı  qrupunuza qoşular. 
+- `/çıx` - Musiqi asistantı qrupunuzdan çıxar. 
 ### Herokuya Dağıd 🚀</h4>
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/DBMBOSSdu313/EfsaneMusicVaves)
 
