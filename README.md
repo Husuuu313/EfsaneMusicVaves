@@ -1,7 +1,7 @@
 <h2 align="centre">Telegram Qrup Musiqi Çalan Botu 🎵</h2>
 
 ### Telegram qrupunun sesli söhbetinde musiqi çalan bir bot
-### Aktiv veziyyetdedir....👍
+### Aktiv veziyyetdedir...👍
 
 <p align="center">
   <img src="https://i.ibb.co/khRz42f/Turkish-Voice.jpg">
