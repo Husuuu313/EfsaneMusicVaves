@@ -9,30 +9,30 @@ from helpers.filters import command, other_filters2
 async def start(_, message: Message):
     await message.reply_photo("https://i.ibb.co/khRz42f/Turkish-Voice.jpg")
     await message.reply_text(
-        f"""**Merhaba, {message.from_user.mention} 🎵
-Sesli sohbetlerde müzik çalabilen botum. Ban yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.\n\nDüzen Tasarım [Talia Müzik 🎙️](https://t.me/Sohbetdestek).
+        f"""**Salam, {message.from_user.mention} 🎵
+Sesli sohbetlerde musiqi çalabilen botam. Yetki verin , Asistantımı qrupa elave edin.\n\Hazırladı [DBMBOSSdu 🎙️](https://t.me/DBMBOSSdu).
  **""",
 
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Grubunuza Ekle ➕", url="https://t.me/Efsanestar_bot?startgroup=true"
+                        "➕ Qrupunuza elave et ➕", url="https://t.me/Efsanestar_bot?startgroup=true"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔊 Asistan", url="https://t.me/Efsanestar_bot" 
+                        "🔊 Asistant", url="https://t.me/DBMmusicasistant" 
                     ),
                     InlineKeyboardButton(
-                        "💬 Sohbet", url="https://t.me/Sohbetskyfall"
+                        "💬 Sohbet", url="https://t.me/DBMsohbet"
                     ),
                     InlineKeyboardButton(
-                        "🙎‍♂️ Geliştirici", url="https://t.me/Mahoaga") 
+                        "🇦🇿 Sahibim", url="https://t.me/DBMBOSSdu") 
                 ],
                 [
                     InlineKeyboardButton(
-                        "🧩 Kaynak Kodu", url="https://github.com/Mehmetbaba55"
+                        "🧩 Github", url="https://github.com/DBMBOSSdu313/EfsaneMusicVaves"
                     )
                 ]
             ]
@@ -42,12 +42,12 @@ Sesli sohbetlerde müzik çalabilen botum. Ban yetkisiz, Ses yönetimi yetkisi v
 
 @Client.on_message(command(["bilgi"])) 
 async def bilgi(_, message: Message):
-      await message.reply_text(f"**Merhaba {message.from_user.mention}!\n Bu botun bilgi menüsü 📚\n\n ▶️ /play - şarkı çalmak için youtube url'sine veya şarkı dosyasına yanıt verme\n ▶️ /play <song name> - istediğiniz şarkıyı çalınız\n 🔴 /ytplay <Sorgu> - youtube üzerinden çalar\n 🎵 /bul <song name> - istediğiniz şarkıları hızlı bir şekilde bulun\n 🎵 /vbul istediğiniz videoları hızlı bir şekilde bulun\n 🔍 /ara <query> - youtube'da ayrıntıları içeren videoları arama\n\n Yalnızca yöneticiler için..\n ⏩ /resume - şarkı çalmaya devam et\n ⏹ /end - müzik botunu kapatmak için\n 🔼 /ver botun sadece yönetici için kullanılabilir olan komutlarını kullanabilmesi için kullanıcıya yetki ver\n 🔽 /al botun yönetici komutlarını kullanabilen kullanıcının yetkisini al\n 🎚 /ses asistan hesabın ses seviyesini kontrol et\n\n ⚪ /katil - Müzik asistanı grubunuza katılır\n ⚫ /ayril - Müzik asistanı grubunuzu terk eder.**", 
+      await message.reply_text(f"**Salam {message.from_user.mention}!\n Bu botun kömek menyusu 📚\n\n ▶️ /play - mahnı oxumaq üçün youtube url'sine veya mahnı faylına yanıt verme\n ▶️ /play <song name> - istediyiniz mahnını oxudar\n 🔴 /ytplay <Sorgu> - youtube üzerinden oxuyar\n 🎵 /bul <song name> - istediyiniz mahnıları celd bir şekilde axtarın\n 🎵 /vbul istediyiniz videoları tez bir şekilde axtarın\n 🔍 /ara <query> - youtube'da ayrıntılardan behs eden videoları axtarma\n\n Yalnız adminler üçün..\n ⏩ /resume - mahnı oxumağı davam et\n ⏹ /end - musiqini dayandırar\n 🔼 /ver botun sadece admin istifade ede biler , olan komandalarını istifade ede bilmesi üçün user'e yetki ver\n 🔽 /al botun admin komandalarını istifade ede bilen userin yetkisini al\n 🎚 /ses asistant hesabın ses seviyesini kontrol ele\n\n ⚪ /gir - Musiqi asistantı qrupunuza girer\n ⚫ /çıx - Musiqi asistantı qrupunuzu terk eder.**", 
       reply_markup=InlineKeyboardMarkup(
              [
                  [
                      InlineKeyboardButton(
-                         "👨‍🔧 Geliştirici", url="https://t.me/Sohbetdestek")
+                         "👨‍🔧 Sahibim", url="https://t.me/DBMBOSSdu")
                  ]
              ]
          )
