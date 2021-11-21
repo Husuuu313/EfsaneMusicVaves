@@ -5,5 +5,5 @@ from pyrogram.types import Chat, Message, User
 
 @USER.on_message(filters.text & filters.private & ~filters.me & ~filters.bot)
 async def pmPermit(client: USER, message: Message):
-  await USER.send_message(message.chat.id,"Merhaba, Müzik asistanı hizmetidir.\n\n ❗️ kurallar:\n - Sohbete izin yok.\n - Bilgi ve Komutlarım için grup sohbetine **/bilgi** yazarsanız. komutlarımı ögrenebilirsiniz. \n - İstenmeyen postaya izin verilmez \n\n 🚨 **USERBOT GRUBUNUZA KATILAMAZSA GRUP DAVETI BAĞLANTISI VEYA KULLANICI ADI GÖNDER.**\n\n ⚠️ DİKKAT: Burada bir mesaj gönderiyorsanız Yöneticinin iletinizi göreceği anlamına gelir ve sohbete katılın\n - Bu kullanıcıyı gizli gruplara eklemeyin.\n   - Özel bilgileri burada paylaşmayınız. 📚 Bilgi için @Mahoaga\n\n")
+  await USER.send_message(message.chat.id,"Salam, Bu musiqi asistant botudur.\n\n ❗️ Qaydalar:\n - Sohbet etmeyin.\n - İstifade etmek üçün qrupa ve yaxud kanala daxil et **/bilgi** yazsan. komandalarımı öyrene bilersen. \n - Fayl'a atmaq olmaz \n\n 🚨 **USERBOT QRUPUNUZA GİRMESE QRUP DEVETI BAĞLANTISI VEYA USER ADI GÖNDER.**\n\n ⚠️ DİQQET: Burada bir mesaj gönderseniz Admin göre biler ve sohbete qatılın\n - Bu botu gizli qruplara elave etmeyin.\n   - Özel melumatları burda paylaşmayın. 📚 Kömek üçün @DBMBOSSdu\n\n")
   return                      
