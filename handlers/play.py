@@ -68,13 +68,13 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     img = Image.open("temp.png")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("etc/font.otf", 32)
-    draw.text((190, 550), f"Parça İsmi: {title}", (255, 255, 255), font=font)
+    draw.text((190, 550), f"Parça adı: {title}", (255, 255, 255), font=font)
     draw.text(
-        (190, 590), f"Parçanın süresi: {duration}", (255, 255, 255), font=font
+        (190, 590), f"Parçanın vaxtı: {duration}", (255, 255, 255), font=font
     )
     draw.text((190, 630), f"Görüntülenme sayısı: {views}", (255, 255, 255), font=font)
     draw.text((190, 670),
-        f"Ekleyen kişi: {requested_by}",
+        f"Elave eden adam: {requested_by}",
         (255, 255, 255),
         font=font,
     )
@@ -85,7 +85,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 
 
 
-@Client.on_message(command(["play", "oynat"]) 
+@Client.on_message(command(["play", "oxu"]) 
                    & filters.group
                    & ~filters.edited 
                    & ~filters.forwarded
@@ -112,24 +112,24 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Önce beni Grubunun yöneticisi olarak ekle!</b>")
+                        "<b>Evvelce meni admin et!</b>")
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "**Müzik asistanı bu gruba müzik çalmak için katıldı 🎵**")
+                        message.chat.id, "**Musiqi asistantı bura musiqi çalmaq üçün girdi 🎵**")
 
                 except UserAlreadyParticipant:
                     pass
                 except Exception:
                     await lel.edit(
-                        f"<b>🛑 Taşan Bekleme Hatası 🛑</b> \n\Merhaba {user.first_name}, yardımcı userbot, yoğun katılma istekleri nedeniyle grubunuza katılamadı. Userbot'un grupta yasaklı olmadığından emin olun ve daha sonra yeniden deneyin!")
+                        f"<b>🛑 Gözleme xetası 🛑</b> \n\Salam {user.first_name}, kömekçi userbot, toplu qatılma istekleri sebebi ile qrupunuza qatılmadı. Userbot'un qrupda banlı olmadığından emin olun ve daha sonra yeniden cehd edin!")
     try:
         await USER.get_chat(chid)
     except:
         await lel.edit(
-            f"<i>Merhaba {user.first_name}, yardımcı userbot bu sohbette değil, yöneticiden göndermesini isteyin /play ilk kez eklemek için komut.</i>")
+            f"<i>Salam {user.first_name}, kömekçi userbot bu sohbetde deyil, adminden göndermesini isteyin /play ilk defe elave etmek üçün komanda.</i>")
         return
     
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
@@ -138,7 +138,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ Daha uzun videolar {DURATION_LIMIT} dakikaların oynatılamasına izin verilmez!"
+                f"❌ Daha uzun videolar {DURATION_LIMIT} deqiqelerin oynadılamasına icaze verilmir!"
             )
 
         file_name = get_file_name(audio)
@@ -146,14 +146,14 @@ async def play(_, message: Message):
         thumb_name = "https://i.ibb.co/Qkz78hx/images-1.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
-        views = "Yerel olarak eklendi"
+        views = "Elave edildi"
 
         keyboard = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
                         text="Kanal 🔊",
-                        url="https://t.me/Sohbetdestek")
+                        url="https://t.me/DBMresmi")
                    
                 ]
             ]
@@ -190,10 +190,10 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton(
-                            text="İzlemek için 🎬",
+                            text="İzlemek üçün 🎬",
                             url=f"{url}"),
                         InlineKeyboardButton(
-                            text="İndir 📥",
+                            text="Yükle 📥",
                             url=f"{durl}")
 
                     ]
@@ -208,25 +208,25 @@ async def play(_, message: Message):
                     [
                         [
                             InlineKeyboardButton(
-                                text="İzlemek için 🎬",
+                                text="İzlemek üçün 🎬",
                                 url=f"https://youtube.com")
 
                         ]
                     ]
                 )
         if (dur / 60) > DURATION_LIMIT:
-             await lel.edit(f"❌ Daha uzun videolar {DURATION_LIMIT} dakikaların oynatılamasına izin verilmez!")
+             await lel.edit(f"❌ Daha uzun videolar {DURATION_LIMIT} deqiqelerin oynadılamasına icaze verilmir!")
              return
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)     
         file_path = await converter.convert(youtube.download(url))
     else:
         if len(message.command) < 2:
-            return await lel.edit("🧐 **Söylemek istediğin şarkı nedir?**")
-        await lel.edit("🔎 **Lütfen bekleyiniz...**")
+            return await lel.edit("🧐 **Qulağ asmağ istediyiniz mahnı nedir?**")
+        await lel.edit("🔎 **Zehmet olmasa gözleyin...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🔁 **Sesler İşleniyor..🔥**")
+        await lel.edit("🔁 **Sesler düzeldilir..🔥**")
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -249,7 +249,7 @@ async def play(_, message: Message):
                 
         except Exception as e:
             await lel.edit(
-                "❌ Şarkı bulunamadı.\n\nBaşka bir şarkı deneyin veya belki düzgün heceleyin."
+                "❌ Mahnı tapılmadı.\n\nBaşqa bir mahnı axtarın veya adını düzgün yazın."
             )
             print(str(e))
             return
@@ -258,10 +258,10 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton(
-                            text="İzlemek için 🎬",
+                            text="İzlemek üçün 🎬",
                             url=f"{url}"),
                         InlineKeyboardButton(
-                            text="İndir 📥",
+                            text="Yükle 📥",
                             url=f"{durl}")
 
                     ]
@@ -269,7 +269,7 @@ async def play(_, message: Message):
             )
         
         if (dur / 60) > DURATION_LIMIT:
-             await lel.edit(f"❌ Daha uzun videolar {DURATION_LIMIT} dakikaların oynatılamasına izin verilmez!")
+             await lel.edit(f"❌ Daha uzun videolar {DURATION_LIMIT} deqiqelerin oynadılamasına icaze verilmir!")
              return
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)  
@@ -290,7 +290,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo="final.png",
         reply_markup=keyboard,
-        caption="**🎵 şᴀʀᴋɪ:** {}\n**🕒 ꜱüʀᴇ:** {} min\n**👤 ᴇᴋʟᴇʏᴇɴ:** {}\n\n**▶️ Şimdi şu anda `{}`...**".format(
+        caption="**🎵 şᴀʀᴋɪ:** {}\n**🕒 ꜱüʀᴇ:** {} min\n**👤 ᴇᴋʟᴇʏᴇɴ:** {}\n\n**▶️ İndi bu anda `{}`...**".format(
         title, duration, message.from_user.mention(), message.chat.title
         ), )
         os.remove("final.png")
