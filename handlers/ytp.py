@@ -22,7 +22,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 @errors
 async def ytplay(_, message: Message):
 
-    lel = await message.reply("🔎 **Aranıyor** Parça...")
+    lel = await message.reply("🔎 **Axtarılır** Parça...")
     sender_id = message.from_user.id
     user_id = message.from_user.id
     sender_name = message.from_user.first_name
@@ -33,7 +33,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    await lel.edit("🎵 **İşleme alındı** 🤫...")
+    await lel.edit("🎵 **Qeyde alındı** ☺️...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -52,7 +52,7 @@ async def ytplay(_, message: Message):
 
     except Exception as e:
         lel.edit(
-            "❌ Şarkı bulunamadı.\n\nBaşka bir şarkı deneyin veya belki düzgün heceleyin."
+            "❌ Mahnı tapılmadı.\n\nBaşqa bir mahnı axtarın veya adını düzgün yazın."
         )
         print(str(e))
         return
@@ -61,7 +61,7 @@ async def ytplay(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="İzlemek için 🎬",
+                        text="İzlemek üçün 🎬",
                         url=f"{url}")
                    
                 ]
@@ -72,7 +72,7 @@ async def ytplay(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="İzlemek için 🎬",
+                        text="İzlemek üçün 🎬",
                         url=f"{url}")
                    
                 ]
@@ -87,13 +87,13 @@ async def ytplay(_, message: Message):
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text("❗ Bana müzik çalmam için Şarkı ismi yazınız!")
+        return await lel.edit_text("❗ Mene mahnı oxumaq üçün musiqi adı yazın!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
         photo=thumb_name, 
-        caption=f"#⃣ İstediğiniz şarkı **Sıraya** Konumda alındı {position}!",
+        caption=f"#⃣ İstediyiniz mahnı **Sıraya** alındı {position}!",
         reply_markup=keyboard2)
         return await lel.delete()
     else:
@@ -101,7 +101,7 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
         photo=thumb_name,
         reply_markup=keyboard,
-        caption="▶️ **Oynatılıyor** burada istenen şarkı {} YouTube aracılığıyla 🎸".format(
+        caption="▶️ **Oxudulur** burada istenilen mahnı {} YouTube'da 🎸".format(
         message.from_user.mention()
         ),
     )
