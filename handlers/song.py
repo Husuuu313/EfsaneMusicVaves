@@ -33,10 +33,10 @@ ydl_opts = {
 }
 
 
-@Client.on_message(command(["bul", f"bul@{bn}"]) & ~filters.edited)
+@Client.on_message(command(["axtar", f"axtar@{bn}"]) & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("🔎 Aranıyor..")
+    m = message.reply("🔎 Axtarılır..")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -49,21 +49,21 @@ def bul(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("❌ şarkı bulunamadı.\n\nlütfen geçerli bir şarkı adı verin.")
+        m.edit("❌ Mahnı tapılmadı.\n\nZehmet olmasa düzgün musiqi adını verin.")
         print(str(e))
         return
-    m.edit("⏱️ Sorgulanıyor...")
+    m.edit("⏱️ Sorğulanır...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"**🎵 İndirildi.**"
+        rep = f"**🎵 Yüklendi.**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("📥 Yüklüyorum...")
+        m.edit("📥 Yüklüyürem...")
         message.reply_audio(
             audio_file,
             caption=rep,
@@ -74,7 +74,7 @@ def bul(_, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ hatanın, düzelmesini bekleyiniz.")
+        m.edit("❌ Xetanın, düzelmesini gözleyin.")
         print(e)
 
     try:
@@ -248,7 +248,7 @@ async def vsong(client, message):
     except Exception as e:
         return await msg.edit(f"🚫 **error:** {e}")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 **video yüklüyorum...**")
+    await msg.edit("📤 **video yüklüyürem...**")
     await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
